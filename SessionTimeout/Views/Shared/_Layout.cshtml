@@ -51,10 +51,12 @@
             $(document).ready(function() {
                 $.sessionTimeout({
                     keepAliveUrl: '/Account/RetainSession',
-                    logoutUrl: '/Account/LogOffUser',
-                    redirUrl: '/Account/LogOffUser',
-                    warnAfter: 1200000,
-                    redirAfter: 1500000,
+                    logoutUrl: '/Account/LogOffUser',                    
+                    warnAfter: 1200000, //20 minutes
+                    redirAfter: 1500000, //25 minutes
+                    onRedir: function (e) {
+                        window.location.href = "/Account/Login";
+                    },
                     countdownMessage: 'Redirecting in {timer} seconds.',
                     countdownBar: true
                 });

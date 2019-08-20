@@ -34,7 +34,7 @@ namespace SessionTimeout
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 },
-                ExpireTimeSpan = TimeSpan.FromSeconds(10)
+                ExpireTimeSpan = TimeSpan.FromMinutes(25)
             });            
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 

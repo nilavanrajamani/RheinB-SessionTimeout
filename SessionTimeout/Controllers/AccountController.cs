@@ -394,7 +394,18 @@ namespace SessionTimeout.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
+        
+        public ActionResult LogOffUser()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
+        }
 
+        [HttpPost]
+        public void RetainSession()
+        {
+
+        }
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]

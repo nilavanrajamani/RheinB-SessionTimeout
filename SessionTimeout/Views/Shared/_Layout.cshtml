@@ -40,5 +40,27 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/bootstrap-session-timeout.min.js"></script>
 </body>
 </html>
+
+<script>
+    @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        <text>
+            $(document).ready(function() {
+                $.sessionTimeout({
+                    keepAliveUrl: '/Account/RetainSession',
+                    logoutUrl: '/Account/LogOffUser',
+                    redirUrl: '/Account/LogOffUser',
+                    warnAfter: 5000,
+                    redirAfter: 7000,
+                    countdownMessage: 'Redirecting in {timer} seconds.',
+                    countdownBar: true
+                });
+            });
+        </text>
+    }
+
+
+</script>
